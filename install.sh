@@ -1,5 +1,7 @@
 # Install dependencies
-sudo apt install libasound2-dev libx11-dev libxrandr-dev libxi-dev libgl1-mesa-dev libglu1-mesa-dev libxcursor-dev libxinerama-dev libwayland-dev libxkbcommon-dev git make cmake glslc glslang-tools libshaderc-dev libshaderc1 vulkan-tools mingw-w64 shim-signed
+sudo apt install libasound2-dev libx11-dev libxrandr-dev libxi-dev libgl1-mesa-dev \
+libglu1-mesa-dev libxcursor-dev libxinerama-dev libwayland-dev libxkbcommon-dev \
+git make cmake glslc glslang-tools libshaderc-dev libshaderc1 vulkan-tools mingw-w64 shim-signed
 sudo apt -y update && sudo apt -y upgrade && sudo apt -y autoremove
 mkdir bin && mkdir bin-web
 
@@ -33,7 +35,10 @@ cmake . -DCMAKE_TOOLCHAIN_FILE=../mingw-toolchain.cmake -DCMAKE_INSTALL_PREFIX=.
 make -j$(nproc)
 sudo cmake -DCMAKE_INSTALL_PREFIX=../bin/ -P cmake_install.cmake
 export PKG_CONFIG_PATH=/usr/lib/pkgconfig:/usr/share/pkgconfig:/usr/lib/x86_64-linux-gnu/pkgconfig
-emcmake cmake . -DBUILD_EXAMPLES=OFF -DGLFW_BUILD_WAYLAND=OFF -DGLFW_BUILD_X11=OFF -DCMAKE_C_FLAGS="-pthread -s USE_PTHREADS=1" -DCMAKE_CXX_FLAGS="-pthread -s USE_PTHREADS=1" && emmake make
+emcmake cmake . -DBUILD_EXAMPLES=OFF -DGLFW_BUILD_WAYLAND=OFF -DGLFW_BUILD_X11=OFF -DGLFW_USE_OSMESA=OFF \
+-DGLFW_BUILD_WIN32=OFF -DGLFW_BUILD_COCOA=OFF -DGLFW_BUILD_SHARED_LIBS=OFF  -DGLFW_USE_NATIVE=OFF \
+-DCMAKE_C_FLAGS="-pthread -s USE_PTHREADS=1" -DCMAKE_CXX_FLAGS="-pthread -s USE_PTHREADS=1"
+emmake make
 mv box2d ../bin-web/
 cd .. && rm -rf box2d
 
