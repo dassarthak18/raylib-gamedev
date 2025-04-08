@@ -33,7 +33,7 @@ cmake . -DCMAKE_TOOLCHAIN_FILE=../mingw-toolchain.cmake -DCMAKE_INSTALL_PREFIX=.
 make -j$(nproc)
 sudo cmake -DCMAKE_INSTALL_PREFIX=../bin/ -P cmake_install.cmake
 export PKG_CONFIG_PATH=/usr/lib/pkgconfig:/usr/share/pkgconfig:/usr/lib/x86_64-linux-gnu/pkgconfig
-emcmake cmake . && emmake make
+emcmake cmake . -DBUILD_EXAMPLES=OFF -DGLFW_BUILD_WAYLAND=OFF -DGLFW_BUILD_X11=OFF -DCMAKE_C_FLAGS="-pthread -s USE_PTHREADS=1" -DCMAKE_CXX_FLAGS="-pthread -s USE_PTHREADS=1" && emmake make
 mv box2d ../bin-web/
 cd .. && rm -rf box2d
 
