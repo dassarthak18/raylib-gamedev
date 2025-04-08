@@ -2,7 +2,7 @@
 
 ### Previous
 
-* [Step 1: Installation](../README.md)
+* [Step 1: Setting Up the Framework](../README.md)
 
 ### Begin
 
