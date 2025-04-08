@@ -11,31 +11,31 @@ echo 'source ~/emsdk/emsdk_env.sh' >> ~/.bashrc
 source ~/.bashrc && cd ..
 
 # Install raylib
-sudo git clone https://github.com/raysan5/raylib.git && cd raylib
-sudo mkdir build && cd build
-sudo cmake -DBUILD_SHARED_LIBS=ON ..
-sudo make && sudo make install && sudo ldconfig
-sudo cmake .. -DCMAKE_TOOLCHAIN_FILE=../../mingw-toolchain.cmake -DCMAKE_INSTALL_PREFIX=../../bin -DBUILD_EXAMPLES=OFF -DBUILD_SHARED_LIBS=OFF
-sudo make -j$(nproc) && sudo make install
+git clone https://github.com/raysan5/raylib.git && cd raylib
+mkdir build && cd build
+cmake -DBUILD_SHARED_LIBS=ON ..
+make && sudo make install && sudo ldconfig
+cmake .. -DCMAKE_TOOLCHAIN_FILE=../../mingw-toolchain.cmake -DCMAKE_INSTALL_PREFIX=../../bin -DBUILD_EXAMPLES=OFF -DBUILD_SHARED_LIBS=OFF
+make -j$(nproc) && sudo make install
 cd ../.. && sudo rm -rf raylib
 
 # Install Box2D for 2D Physics
-sudo git clone https://github.com/erincatto/box2d.git && cd box2d
-sudo cmake -DCMAKE_VERBOSE_MAKEFILE=ON .
-sudo make
+git clone https://github.com/erincatto/box2d.git && cd box2d
+cmake -DCMAKE_VERBOSE_MAKEFILE=ON .
+make
 sudo cmake -DCMAKE_INSTALL_PREFIX=/usr/local -P cmake_install.cmake
-sudo cp ../src/force_includes.h ./force_includes.h
-sudo cmake . -DCMAKE_TOOLCHAIN_FILE=../mingw-toolchain.cmake -DCMAKE_INSTALL_PREFIX=../bin -DCMAKE_CXX_FLAGS="-includeforce_includes.h"
-sudo cmake . -DCMAKE_TOOLCHAIN_FILE=../mingw-toolchain.cmake -DCMAKE_INSTALL_PREFIX=../bin -DCMAKE_CXX_FLAGS="-includeforce_includes.h"
-sudo make -j$(nproc)
+cp ../src/force_includes.h ./force_includes.h
+cmake . -DCMAKE_TOOLCHAIN_FILE=../mingw-toolchain.cmake -DCMAKE_INSTALL_PREFIX=../bin -DCMAKE_CXX_FLAGS="-includeforce_includes.h"
+cmake . -DCMAKE_TOOLCHAIN_FILE=../mingw-toolchain.cmake -DCMAKE_INSTALL_PREFIX=../bin -DCMAKE_CXX_FLAGS="-includeforce_includes.h"
+make -j$(nproc)
 sudo cmake -DCMAKE_INSTALL_PREFIX=../bin/ -P cmake_install.cmake
 cd .. && sudo rm -rf box2d
 
 # Install JoltPhysics for 3D Physics
-sudo git clone https://github.com/jrouwe/JoltPhysics.git && cd JoltPhysics/Build/
-sudo cmake . && sudo make && sudo make install
-sudo cmake . -DCMAKE_TOOLCHAIN_FILE=../../mingw-toolchain.cmake -DCMAKE_INSTALL_PREFIX=../../bin
-sudo make -j$(nproc) && sudo make install
+git clone https://github.com/jrouwe/JoltPhysics.git && cd JoltPhysics/Build/
+cmake . && make && sudo make install
+cmake . -DCMAKE_TOOLCHAIN_FILE=../../mingw-toolchain.cmake -DCMAKE_INSTALL_PREFIX=../../bin
+make -j$(nproc) && sudo make install
 cd ../.. && sudo rm -rf JoltPhysics
 
 # Run tests
