@@ -104,7 +104,7 @@ git clone https://github.com/dassarthak18/raylib-gamedev.git
 sudo ./install.sh
 # can compile your code cross-platform (to Windows)
 sudo ./windows_build.sh
-# or alternatively, to HTmL5
+# or alternatively, to HTML5
 code
 ```
 
