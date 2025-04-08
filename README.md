@@ -81,4 +81,6 @@ sudo ./install.sh
 sudo ./windows_build.sh
 ```
 
-<object type="text/markdown" data="docs/step_2.md"></object>
+## Next
+
+* [Step 2: Basic Game Structure](docs/step_2.md)
