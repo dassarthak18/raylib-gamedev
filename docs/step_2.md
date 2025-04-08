@@ -1,9 +1,9 @@
-# Step 2: Basic Structure of a Game
+## Step 2: Basic Structure of a Game
 
-## Previous
+### Previous
 
-* [Part 1: Installation](../README.md)
+* [Step 1: Installation](../README.md)
 
-## Begin
+### Begin
 
 Text goes here.
