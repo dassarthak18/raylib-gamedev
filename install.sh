@@ -1,7 +1,7 @@
 # Install dependencies
 sudo apt install libasound2-dev libx11-dev libxrandr-dev libxi-dev libgl1-mesa-dev libglu1-mesa-dev libxcursor-dev libxinerama-dev libwayland-dev libxkbcommon-dev git make cmake glslc glslang-tools libshaderc-dev libshaderc1 vulkan-tools mingw-w64
 sudo apt -y update && sudo apt -y upgrade && sudo apt -y autoremove
-sudo mkdir bin && sudo mkdir bin-web
+mkdir bin && mkdir bin-web
 
 # Install emscriptenSDK
 git clone https://github.com/emscripten-core/emsdk.git && cd emsdk
@@ -17,7 +17,10 @@ cmake -DBUILD_SHARED_LIBS=ON ..
 make && sudo make install && sudo ldconfig
 cmake .. -DCMAKE_TOOLCHAIN_FILE=../../mingw-toolchain.cmake -DCMAKE_INSTALL_PREFIX=../../bin -DBUILD_EXAMPLES=OFF -DBUILD_SHARED_LIBS=OFF
 make -j$(nproc) && sudo make install
-cd ../.. && sudo rm -rf raylib
+cd .. && mkdir build-web && cd build-web
+emcmake cmake .. && emmake make
+mv raylib ../../bin-web/
+cd ../.. && rm -rf raylib
 
 # Install Box2D for 2D Physics
 git clone https://github.com/erincatto/box2d.git && cd box2d
@@ -29,14 +32,19 @@ cmake . -DCMAKE_TOOLCHAIN_FILE=../mingw-toolchain.cmake -DCMAKE_INSTALL_PREFIX=.
 cmake . -DCMAKE_TOOLCHAIN_FILE=../mingw-toolchain.cmake -DCMAKE_INSTALL_PREFIX=../bin -DCMAKE_CXX_FLAGS="-includeforce_includes.h"
 make -j$(nproc)
 sudo cmake -DCMAKE_INSTALL_PREFIX=../bin/ -P cmake_install.cmake
-cd .. && sudo rm -rf box2d
+emcmake cmake . && emmake make
+mv box2d ../bin-web/
+cd .. && rm -rf box2d
 
 # Install JoltPhysics for 3D Physics
 git clone https://github.com/jrouwe/JoltPhysics.git && cd JoltPhysics/Build/
 cmake . && make && sudo make install
 cmake . -DCMAKE_TOOLCHAIN_FILE=../../mingw-toolchain.cmake -DCMAKE_INSTALL_PREFIX=../../bin
 make -j$(nproc) && sudo make install
-cd ../.. && sudo rm -rf JoltPhysics
+mkdir ../Build-Web && cd ../Build-Web
+emcmake cmake ../Build/ && emmake make && cd ..
+mv Build-Web ../bin-web/JoltPhysics/
+cd .. && rm -rf JoltPhysics
 
 # Run tests
 GAME_DIR="$(basename "$(pwd)")"
