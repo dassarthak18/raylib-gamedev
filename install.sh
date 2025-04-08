@@ -1,7 +1,14 @@
 # Install dependencies
 sudo apt install libasound2-dev libx11-dev libxrandr-dev libxi-dev libgl1-mesa-dev libglu1-mesa-dev libxcursor-dev libxinerama-dev libwayland-dev libxkbcommon-dev git make cmake glslc glslang-tools libshaderc-dev libshaderc1 vulkan-tools mingw-w64
 sudo apt -y update && sudo apt -y upgrade && sudo apt -y autoremove
-sudo mkdir bin
+sudo mkdir bin && sudo mkdir bin-web
+
+# Install emscriptenSDK
+git clone https://github.com/emscripten-core/emsdk.git && cd emsdk
+./emsdk install latest && ./emsdk activate latest
+source ./emsdk_env.sh
+echo 'source ~/emsdk/emsdk_env.sh' >> ~/.bashrc
+source ~/.bashrc && cd ..
 
 # Install raylib
 sudo git clone https://github.com/raysan5/raylib.git && cd raylib
@@ -31,13 +38,8 @@ sudo cmake . -DCMAKE_TOOLCHAIN_FILE=../../mingw-toolchain.cmake -DCMAKE_INSTALL_
 sudo make -j$(nproc) && sudo make install
 cd ../.. && sudo rm -rf JoltPhysics
 
-# Install emscriptenSDK
-sudo git clone https://github.com/emscripten-core/emsdk.git && cd emsdk
-./emsdk install latest && ./emsdk activate latest
-source ./emsdk_env.sh
-
 # Run tests
 GAME_DIR="$(basename "$(pwd)")"
-./emsdk help && cd ..
-g++ src/smain.cpp -o "${GAME_DIR}.sh"
+emcc -v
+g++ src/main.cpp -o "${GAME_DIR}.sh"
 chmod u+x "${GAME_DIR}.sh" && ./"${GAME_DIR}.sh"
