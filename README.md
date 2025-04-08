@@ -1,8 +1,8 @@
 # Game Development in C++ using raylib
 
-## Step 1: Installation
+## Step 1: Setting Up the Framework
 
-### Installing and Setting Up Raylib
+### Installing Raylib and Friends
 
 Refer to the ``install.sh`` script for installing and setting up [**raylib**](https://www.raylib.com/) and friends (**mingw-w64** for cross-platform compilation to Windows, [**Box2D**](https://box2d.org/) for 2D physics, [**JoltPhysics**](https://jrouwe.github.io/JoltPhysicsDocs/5.2.0/index.html) for 3D physics and **emscriptenSDK** for compiling to HTML5):
 
