@@ -1,6 +1,8 @@
-# Step 1: Installation
+# Game Development in C++ using raylib
 
-## Installing and Setting Up Raylib
+## Step 1: Installation
+
+### Installing and Setting Up Raylib
 
 Refer to the ``install.sh`` script for installing and setting up **raylib** and friends (**mingw-w64** for cross-platform compilation to Windows, **Box2D** for 2D physics, **JoltPhysics** for 3D physics and **emscriptenSDK** for compiling to HTML5):
 
@@ -52,7 +54,7 @@ chmod u+x "${GAME_DIR}.sh" && ./"${GAME_DIR}.sh"
 
 Please note that this code is specific for Debian-based Linux distros (which use the apt package manager). For RPM or Arch-based distros, which have different package managers, the commands for installing dependencies will vary.
 
-## Compiling Executables for Windows and Linux
+### Compiling Executables for Windows and Linux
 
 The last part of the script demonstrates how to compile any code such as our example ``src/main.cpp``:
 
@@ -69,7 +71,7 @@ int main()
 
 into a Linux executable. Similarly, we can leverage ``mingw-w64`` to cross-compile to Windows executables (.exe) as well. This is automated into the ``windows_build.sh``, and should pose no problem. Please note that the assets used in your games must be included along with the binaries (Windows/Linux) when shipping the game.
 
-## TL;DR
+### TL;DR
 
 ```bash
 # clone this repository
@@ -81,6 +83,6 @@ sudo ./install.sh
 sudo ./windows_build.sh
 ```
 
-## Next
+### Next
 
 * [Step 2: Basic Game Structure](docs/step_2.md)
