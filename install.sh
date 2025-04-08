@@ -35,11 +35,13 @@ cmake . -DCMAKE_TOOLCHAIN_FILE=../mingw-toolchain.cmake -DCMAKE_INSTALL_PREFIX=.
 make -j$(nproc)
 sudo cmake -DCMAKE_INSTALL_PREFIX=../bin/ -P cmake_install.cmake
 export PKG_CONFIG_PATH=/usr/lib/pkgconfig:/usr/share/pkgconfig:/usr/lib/x86_64-linux-gnu/pkgconfig
-emcmake cmake . -DBUILD_EXAMPLES=OFF -DGLFW_BUILD_WAYLAND=OFF -DGLFW_BUILD_X11=OFF -DGLFW_USE_OSMESA=OFF \
+emcmake cmake . -DCMAKE_TOOLCHAIN_FILE=$EMSDK/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake \
+-DCMAKE_CROSSCOMPILING_EMULATOR=$EMSDK/node/20.18.0_64bit/bin/node \
+-DGLFW_BUILD_WAYLAND=OFF -DGLFW_BUILD_X11=OFF -DGLFW_USE_OSMESA=OFF \
 -DGLFW_BUILD_WIN32=OFF -DGLFW_BUILD_COCOA=OFF -DGLFW_BUILD_TESTS=OFF -DGLFW_BUILD_DOCS=OFF \
--DCMAKE_C_FLAGS="-pthread -s USE_PTHREADS=1" -DCMAKE_CXX_FLAGS="-pthread -s USE_PTHREADS=1" \
--DCMAKE_C_FLAGS="-std=gnu99"
-emmake make
+-DCMAKE_C_FLAGS="-std=gnu99 -pthread -s USE_PTHREADS=1" -DCMAKE_CXX_FLAGS="-pthread -s USE_PTHREADS=1" \
+-DCMAKE_EXE_LINKER_FLAGS="-pthread -s USE_PTHREADS=1 -s ERROR_ON_UNDEFINED_SYMBOLS=0"
+emmake make -j
 mv box2d ../bin-web/
 cd .. && rm -rf box2d
 
