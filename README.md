@@ -107,6 +107,7 @@ sudo ./windows_build.sh
 # or alternatively, to HTML5
 code
 ```
+These scripts, battle-tested, are provided in this repository so that you don't have to spend hours and hours setting things up before even having the chance to get started!
 
 ### Next
 
