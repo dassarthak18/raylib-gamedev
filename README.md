@@ -80,3 +80,5 @@ sudo ./install.sh
 # can compile your code cross-platform (to Windows)
 sudo ./windows_build.sh
 ```
+
+<object type="text/markdown" data="docs/step_2.md"></object>
