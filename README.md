@@ -1,6 +1,8 @@
+# Step 1: Installation
+
 ## Installing and Setting Up Raylib
 
-Refer to the ``install.sh`` script for installing and setting up raylib and friends (mingw-w64 for cross-platform compilation to Windows, Box2D for 2D physics, JoltPhysics for 3D physics and emscriptenSDK for compiling to HTML5):
+Refer to the ``install.sh`` script for installing and setting up **raylib** and friends (**mingw-w64** for cross-platform compilation to Windows, **Box2D** for 2D physics, **JoltPhysics** for 3D physics and **emscriptenSDK** for compiling to HTML5):
 
 ```bash
 # Install dependencies
@@ -52,7 +54,7 @@ Please note that this code is specific for Debian-based Linux distros (which use
 
 ## Compiling Executables for Windows and Linux
 
-The last part of the script demonstrates how to compile any code such as our example ```src/main.cpp``:
+The last part of the script demonstrates how to compile any code such as our example ``src/main.cpp``:
 
 ```C++
 #include<raylib.h>
@@ -66,3 +68,15 @@ int main()
 ```
 
 into a Linux executable. Similarly, we can leverage ``mingw-w64`` to cross-compile to Windows executables (.exe) as well. This is automated into the ``windows_build.sh``, and should pose no problem. Please note that the assets used in your games must be included along with the binaries (Windows/Linux) when shipping the game.
+
+## TL;DR
+
+```bash
+# clone this repository
+git clone https://github.com/dassarthak18/raylib-gamedev.git
+# install all libraries (assuming Ubuntu)
+# this creates a bin directory and an emsdk directory which will be important later
+sudo ./install.sh
+# can compile your code cross-platform (to Windows)
+sudo ./windows_build.sh
+```
