@@ -37,7 +37,8 @@ sudo cmake -DCMAKE_INSTALL_PREFIX=../bin/ -P cmake_install.cmake
 export PKG_CONFIG_PATH=/usr/lib/pkgconfig:/usr/share/pkgconfig:/usr/lib/x86_64-linux-gnu/pkgconfig
 emcmake cmake . -DBUILD_EXAMPLES=OFF -DGLFW_BUILD_WAYLAND=OFF -DGLFW_BUILD_X11=OFF -DGLFW_USE_OSMESA=OFF \
 -DGLFW_BUILD_WIN32=OFF -DGLFW_BUILD_COCOA=OFF -DGLFW_BUILD_SHARED_LIBS=OFF  -DGLFW_USE_NATIVE=OFF \
--DCMAKE_C_FLAGS="-pthread -s USE_PTHREADS=1" -DCMAKE_CXX_FLAGS="-pthread -s USE_PTHREADS=1"
+-DGLFW_BUILD_EXAMPLES=OFF -DGLFW_BUILD_TESTS=OFF -DGLFW_BUILD_DOCS=OFF -DCMAKE_C_FLAGS="-pthread -s USE_PTHREADS=1" \
+-DCMAKE_CXX_FLAGS="-pthread -s USE_PTHREADS=1"
 emmake make
 mv box2d ../bin-web/
 cd .. && rm -rf box2d
