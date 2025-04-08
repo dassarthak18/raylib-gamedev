@@ -4,7 +4,7 @@
 
 ### Installing and Setting Up Raylib
 
-Refer to the ``install.sh`` script for installing and setting up **raylib** and friends (**mingw-w64** for cross-platform compilation to Windows, **Box2D** for 2D physics, **JoltPhysics** for 3D physics and **emscriptenSDK** for compiling to HTML5):
+Refer to the ``install.sh`` script for installing and setting up [**raylib**](https://www.raylib.com/) and friends (**mingw-w64** for cross-platform compilation to Windows, [**Box2D**](https://box2d.org/) for 2D physics, [**JoltPhysics**](https://jrouwe.github.io/JoltPhysicsDocs/5.2.0/index.html) for 3D physics and **emscriptenSDK** for compiling to HTML5):
 
 ```bash
 # Install dependencies
@@ -70,6 +70,10 @@ int main()
 ```
 
 into a Linux executable. Similarly, we can leverage ``mingw-w64`` to cross-compile to Windows executables (.exe) as well. This is automated into the ``windows_build.sh``, and should pose no problem. Please note that the assets used in your games must be included along with the binaries (Windows/Linux) when shipping the game.
+
+### Compiling to HTML5 for Browser-Based Play
+
+Text describing emscriptenSDK.
 
 ### TL;DR
 
