@@ -49,7 +49,7 @@ cd ../.. && sudo rm -rf JoltPhysics
 
 # Run tests
 GAME_DIR="$(basename "$(pwd)")"
-./emsdk help && cd ..
+emcc -v
 g++ src/main.cpp -o "${GAME_DIR}.sh"
 chmod u+x "${GAME_DIR}.sh" && ./"${GAME_DIR}.sh"
 ```
