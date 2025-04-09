@@ -20,7 +20,6 @@ mkdir build && cd build
 cmake -DBUILD_SHARED_LIBS=ON ..
 make && sudo make install && sudo ldconfig
 cmake .. -DCMAKE_TOOLCHAIN_FILE=../../mingw-toolchain.cmake -DCMAKE_INSTALL_PREFIX=../../bin -DBUILD_EXAMPLES=OFF -DBUILD_SHARED_LIBS=OFF
-cmake .. -DCMAKE_TOOLCHAIN_FILE=../../mingw-toolchain.cmake -DCMAKE_INSTALL_PREFIX=../../bin -DBUILD_EXAMPLES=OFF -DBUILD_SHARED_LIBS=OFF
 make -j$(nproc) && sudo make install
 cd .. && mkdir build-web && cd build-web
 emcmake cmake .. && emmake make
@@ -34,7 +33,6 @@ make
 sudo cmake -DCMAKE_INSTALL_PREFIX=/usr/local -P cmake_install.cmake
 cp ../src/force_includes.h ./force_includes.h
 cmake . -DCMAKE_TOOLCHAIN_FILE=../mingw-toolchain.cmake -DCMAKE_INSTALL_PREFIX=../bin -DCMAKE_CXX_FLAGS="-includeforce_includes.h"
-cmake . -DCMAKE_TOOLCHAIN_FILE=../mingw-toolchain.cmake -DCMAKE_INSTALL_PREFIX=../bin -DCMAKE_CXX_FLAGS="-includeforce_includes.h"
 make -j$(nproc)
 sudo cmake -DCMAKE_INSTALL_PREFIX=../bin/ -P cmake_install.cmake
 mkdir build-web && cd build-web
@@ -45,14 +43,13 @@ emcmake cmake .. -DCMAKE_TOOLCHAIN_FILE=$EMSDK/upstream/emscripten/cmake/Modules
 -DGLFW_BUILD_WIN32=OFF -DGLFW_BUILD_COCOA=OFF -DGLFW_BUILD_TESTS=OFF -DGLFW_BUILD_DOCS=OFF \
 -DCMAKE_C_FLAGS="-std=gnu99 -pthread -s USE_PTHREADS=1 -DPOSIX_REQUIRED_STANDARD=199309L -D_POSIX_C_SOURCE=POSIX_REQUIRED_STANDARD -D_POSIX_SOURCE=POSIX_REQUIRED_STANDARD" \
 -DCMAKE_CXX_FLAGS="-std=gnu++17 -Wno-nontrivial-memcall -pthread -s USE_PTHREADS=1" -DCMAKE_EXE_LINKER_FLAGS="-pthread -s USE_PTHREADS=1 -s ERROR_ON_UNDEFINED_SYMBOLS=0"
-emmake make -j
+emmake make
 cd .. && mv build-web ../bin-web/box2d
 cd .. && rm -rf box2d
 
 # Install JoltPhysics for 3D Physics
 git clone https://github.com/jrouwe/JoltPhysics.git && cd JoltPhysics/Build/
 cmake . && make && sudo make install
-cmake . -DCMAKE_TOOLCHAIN_FILE=../../mingw-toolchain.cmake -DCMAKE_INSTALL_PREFIX=../../bin
 cmake . -DCMAKE_TOOLCHAIN_FILE=../../mingw-toolchain.cmake -DCMAKE_INSTALL_PREFIX=../../bin
 make -j$(nproc) && sudo make install
 mkdir ../Build-Web && cd ../Build-Web
