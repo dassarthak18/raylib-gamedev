@@ -2,7 +2,7 @@
 
 ## Step 1: Setting Up the Framework
 
-### Installing Raylib and Friends
+### Installing raylib and Friends
 
 Refer to the ``install.sh`` script for installing and setting up [**raylib**](https://www.raylib.com/) and friends (**mingw-w64** for cross-platform compilation to Windows, [**Box2D**](https://box2d.org/) for 2D physics and [**JoltPhysics**](https://jrouwe.github.io/JoltPhysicsDocs/5.2.0/index.html) for 3D physics):
 
