@@ -19,7 +19,7 @@ git clone https://github.com/raysan5/raylib.git && cd raylib
 mkdir build && cd build
 cmake -DBUILD_SHARED_LIBS=ON ..
 make && sudo make install && sudo ldconfig
-cmake .. -DCMAKE_TOOLCHAIN_FILE=../../mingw-toolchain.cmake -DCMAKE_INSTALL_PREFIX=../../bin -DBUILD_EXAMPLES=OFF -DBUILD_SHARED_LIBS=OFF
+cmake .. -DCMAKE_INSTALL_PREFIX=../../bin -DBUILD_EXAMPLES=OFF -DBUILD_SHARED_LIBS=OFF
 make -j$(nproc) && sudo make install
 cd .. && mkdir build-web && cd build-web
 emcmake cmake .. && emmake make
