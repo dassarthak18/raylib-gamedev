@@ -7,6 +7,8 @@
 Refer to the ``install.sh`` script for installing and setting up [**raylib**](https://www.raylib.com/) and friends (**mingw-w64** for cross-platform compilation to Windows, [**Box2D**](https://box2d.org/) for 2D physics, [**JoltPhysics**](https://jrouwe.github.io/JoltPhysicsDocs/5.2.0/index.html) for 3D physics and **emscriptenSDK** for compiling to HTML5):
 
 ```bash
+#!/bin/bash
+
 # Install dependencies
 sudo apt -y install libasound2-dev libx11-dev libxrandr-dev libxi-dev libgl1-mesa-dev \
 libglu1-mesa-dev libxcursor-dev libxinerama-dev libwayland-dev libxkbcommon-dev \
