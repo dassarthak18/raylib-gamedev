@@ -29,6 +29,7 @@ mkdir build && cd build
 cmake -DBUILD_SHARED_LIBS=ON ..
 make && sudo make install && sudo ldconfig
 cmake .. -DCMAKE_TOOLCHAIN_FILE=../../mingw-toolchain.cmake -DCMAKE_INSTALL_PREFIX=../../bin -DBUILD_EXAMPLES=OFF -DBUILD_SHARED_LIBS=OFF
+cmake .. -DCMAKE_TOOLCHAIN_FILE=../../mingw-toolchain.cmake -DCMAKE_INSTALL_PREFIX=../../bin -DBUILD_EXAMPLES=OFF -DBUILD_SHARED_LIBS=OFF
 make -j$(nproc) && sudo make install
 cd .. && mkdir build-web && cd build-web
 emcmake cmake .. && emmake make
@@ -60,6 +61,7 @@ cd .. && rm -rf box2d
 # Install JoltPhysics for 3D Physics
 git clone https://github.com/jrouwe/JoltPhysics.git && cd JoltPhysics/Build/
 cmake . && make && sudo make install
+cmake . -DCMAKE_TOOLCHAIN_FILE=../../mingw-toolchain.cmake -DCMAKE_INSTALL_PREFIX=../../bin
 cmake . -DCMAKE_TOOLCHAIN_FILE=../../mingw-toolchain.cmake -DCMAKE_INSTALL_PREFIX=../../bin
 make -j$(nproc) && sudo make install
 mkdir ../Build-Web && cd ../Build-Web
