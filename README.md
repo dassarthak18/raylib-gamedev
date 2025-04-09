@@ -8,7 +8,7 @@ Refer to the ``install.sh`` script for installing and setting up [**raylib**](ht
 
 ```bash
 # Install dependencies
-sudo apt install libasound2-dev libx11-dev libxrandr-dev libxi-dev libgl1-mesa-dev \
+sudo apt -y install libasound2-dev libx11-dev libxrandr-dev libxi-dev libgl1-mesa-dev \
 libglu1-mesa-dev libxcursor-dev libxinerama-dev libwayland-dev libxkbcommon-dev \
 git make cmake glslc glslang-tools libshaderc-dev libshaderc1 vulkan-tools mingw-w64 shim-signed
 sudo apt -y update && sudo apt -y upgrade && sudo apt -y autoremove
