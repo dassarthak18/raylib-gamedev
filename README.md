@@ -74,7 +74,6 @@ into a Linux executable. Similarly, we can leverage ``mingw-w64`` to cross-compi
 # clone this repository
 git clone https://github.com/dassarthak18/raylib-gamedev.git
 # install all libraries (assuming Ubuntu)
-# this creates a bin directory, a bin-web directory and an emsdk directory which will be important later
 sudo ./install.sh
 # can compile your code cross-platform (to Windows)
 sudo ./windows_build.sh
